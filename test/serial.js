@@ -15,6 +15,7 @@ describe('serial case',function(){
       var me = this;
       setTimeout(function(){
         result = 'second called';
+        console.log(me);
         me.done();
       },500);
     };
@@ -22,6 +23,7 @@ describe('serial case',function(){
       var me = this;
       setTimeout(function(){
         result = 'third called';
+        console.log(123123);
         me.done();
       },500);
     };
@@ -38,14 +40,14 @@ describe('serial case',function(){
     setTimeout(function(){
       assert.equal('first called',result);
       done();
-    },500);
+    },600);
   });
 
   it('#second called after 1000ms',function(done){
     setTimeout(function(){
       assert.equal('second called',result);
       done();
-    },1000);
+    },1100);
   });
 
 
@@ -53,7 +55,7 @@ describe('serial case',function(){
     setTimeout(function(){
       assert.equal('third called',result);
       done();
-    },1500);
+    },1600);
   });
 });
 
