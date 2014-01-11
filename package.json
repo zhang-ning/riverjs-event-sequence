@@ -1,0 +1,28 @@
+{
+  "name": "riverjs-event-sequence",
+  "version": "0.0.1",
+  "description": "a tool for handling serial and parallel asynchronous event quene.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhang-ning/riverjs-event-sequence"
+  },
+  "keywords": [
+    "serial",
+    "parallel",
+    "asynchronous",
+    "event",
+    "quene",
+    "tool",
+    "javascript",
+    "cross",
+    "browser",
+    "and",
+    "node"
+  ],
+  "author": "Jonathan Zhang",
+  "license": "MIT"
+}
