@@ -24,5 +24,8 @@
     "node"
   ],
   "author": "Jonathan Zhang",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.16.2"
+  }
 }
