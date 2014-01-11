@@ -4,7 +4,7 @@
   "description": "a tool for handling serial and parallel asynchronous event quene.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "node_modules/mocha/bin/mocha -C -R spec"
   },
   "repository": {
     "type": "git",
