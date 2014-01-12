@@ -8,6 +8,10 @@ a tool for handling serial and parallel asynchronous event quene.
 
 npm install riverjs-event-sequence --save-dev
 
+###Test
+
+npm test
+
 
 
 ###Serial sequence , how to use
