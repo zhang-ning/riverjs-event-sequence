@@ -6,11 +6,15 @@ a tool for handling serial and parallel asynchronous event quene.
 
 ###Install
 
+```
 npm install riverjs-event-sequence --save-dev
+```
 
 ###Test
 
+```
 npm test
+```
 
 
 
