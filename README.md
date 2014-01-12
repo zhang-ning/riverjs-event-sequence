@@ -3,6 +3,13 @@ riverjs-event-sequence
 
 a tool for handling serial and parallel asynchronous event quene.
 
+
+###Install
+
+npm install riverjs-event-sequence --save-dev
+
+
+
 ###Serial sequence , how to use
 
 ```
