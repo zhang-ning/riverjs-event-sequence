@@ -25,7 +25,7 @@ describe('serial case',function(){
       }, 100);
     };
 
-    queue = new serial();
+    var queue = new serial();
     queue.push(task1);
     queue.push(task2);
     queue.push(task3);
