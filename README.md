@@ -21,6 +21,7 @@ npm test
 ###Serial sequence , how to use
 
 ```
+var serial = require('riverjs-event-sequence').serial;
 var task1=function(){
   setTimeout(function(){
       //your asyncnoize logic
@@ -47,6 +48,7 @@ queue.exec();
 ###Parallel sequence, how to use
 
 ```
+var parallel = require('riverjs-event-sequence').parallel;
     var task1 = function (){
       setTimeout(function () {
           data.push({name:'task1',time:Date.now() - beginTime});
