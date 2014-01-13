@@ -2,9 +2,10 @@ var parallel = require('../').parallel;
 var assert = require('assert');
 
 describe('parallel case',function(){
-  var task1,task2,task3,data=[],beginTime=Date.now();
+  var task1,task2,task3,data=[],beginTime=Date.now(),q;
   before(function(done){
     task1 = function (){
+      var queue = this;
       setTimeout(function () {
           data.push({name:'task1',time:Date.now() - beginTime});
           queue.update();
@@ -12,6 +13,7 @@ describe('parallel case',function(){
     };
     task2 = function (msg,code){
       var args = arguments;
+      var queue = this;
       setTimeout(function () {
         data.push({name:'task2',time:Date.now() - beginTime});
         queue.update();
@@ -19,21 +21,27 @@ describe('parallel case',function(){
     };
     task3 = function (msg,code,fn){
       var args = arguments;
+      var queue = this;
       setTimeout(function () {
         data.push({name:'task3',time:Date.now() - beginTime});
         queue.update();
         done();
       }, 100);
     };
-    var queue = new parallel();
-    queue.push(task1);
-    queue.push(task2);
-    queue.push(task3);
-    queue.exec();
+    q = new parallel();
+    q.push(task1);
+    q.push(task2);
+    q.push(task3);
+    q.exec();
   });
 
   it('#data.length should equal 3',function(){
     assert(3 === data.length);
+  });
+  it('#on end event',function(){
+    q.on('end',function(){
+      assert(3 === data.length);
+    });
   });
   it('#task1 execute time more then 50ms',function(){
     assert(data[0].time >= 50);

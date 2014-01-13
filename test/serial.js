@@ -5,6 +5,7 @@ describe('serial case',function(){
   var task1,task2,task3,data=[];
   before(function(done){
     task1 = function (){
+      var queue=this;
       setTimeout(function () {
           data.push({num:'task1'});
           queue.next('task1 successed',200);
@@ -12,6 +13,7 @@ describe('serial case',function(){
     };
     task2 = function (msg,code){
       var args = arguments;
+      var queue=this;
       setTimeout(function () {
         data.push({num:'task2',args:args});
         queue.next('task2 failed',500,function(){});
@@ -19,17 +21,18 @@ describe('serial case',function(){
     };
     task3 = function (msg,code,fn){
       var args = arguments;
+      var queue=this;
       setTimeout(function () {
         data.push({num:'task3',args:args});
         done();
       }, 100);
     };
 
-    var queue = new serial();
-    queue.push(task1);
-    queue.push(task2);
-    queue.push(task3);
-    queue.exec();
+    var q = new serial();
+    q.push(task1);
+    q.push(task2);
+    q.push(task3);
+    q.exec();
   });
 
   it('#data.length should equal 3',function(){
