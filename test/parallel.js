@@ -38,11 +38,11 @@ describe('parallel case',function(){
   it('#task1 execute time more then 50ms',function(){
     assert(data[0].time >= 50);
   });
-  it('#task1 execute time more then 50ms,less then 100ms',function(){
+  it('#task2 execute time more then 50ms,less then 100ms',function(){
     assert(data[1].time >= 50);
     assert(data[1].time <= 100);
   });
-  it('#task1 execute time more then 100ms,less then 200ms',function(){
+  it('#task3 execute time more then 100ms,less then 200ms',function(){
     assert(data[2].time >= 100);
     assert(data[2].time <= 200);
   });
