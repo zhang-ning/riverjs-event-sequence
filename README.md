@@ -1,5 +1,6 @@
 riverjs-event-sequence
 ======================
+[![Build Status](https://travis-ci.org/zhang-ning/riverjs-event-sequence.png?branch=master)](https://travis-ci.org/zhang-ning/riverjs-event-sequence)
 
 a tool for handling serial and parallel asynchronous event quene.
 
