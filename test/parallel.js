@@ -8,7 +8,7 @@ describe('parallel case',function(){
       var queue = this;
       setTimeout(function () {
           data.push({name:name,time:Date.now() - beginTime});
-          queue.update();
+          queue.end();
       }, 50);
     };
     task2 = function (msg,code){
@@ -16,7 +16,7 @@ describe('parallel case',function(){
       var queue = this;
       setTimeout(function () {
         data.push({name:'task2',time:Date.now() - beginTime});
-        queue.update();
+        queue.end();
       }, 50);
     };
     task3 = function (msg,code,fn){
@@ -24,7 +24,7 @@ describe('parallel case',function(){
       var queue = this;
       setTimeout(function () {
         data.push({name:'task3',time:Date.now() - beginTime});
-        queue.update();
+        queue.end();
         done();
       }, 100);
     };
@@ -32,7 +32,6 @@ describe('parallel case',function(){
     q.push(task1,'jon');
     q.push(task2);
     q.push(task3);
-    q.exec();
   });
 
   it('#data.length should equal 3',function(){

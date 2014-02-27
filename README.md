@@ -61,20 +61,20 @@ var queue = new parallel();
 queue.push(task1,params);
 queue.push(task2,1,2);
 queue.push(task3,{a:1});
-queue.exec();
+
 
 queue.on('end',function(){
-  //when all parallel tasks end , here will be triggerd
+  //all parallel tasks end. 
 })
 
 
-//each task should call this.update , when finished.
+//each task should call this.end() , when finished.
 //For example:
 
 function task1(name,sex){
   var  me = this;
   setTimeout(function(){
-    me.update();
+    me.end();
   },500);
 }
 
