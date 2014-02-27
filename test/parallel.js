@@ -29,8 +29,7 @@ describe('parallel case',function(){
       }, 100);
     };
     q = new parallel();
-    q.push(task1);
-    task1.args = ['jon'];
+    q.push(task1,['jon']);
     q.push(task2);
     q.push(task3);
     q.exec();
