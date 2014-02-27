@@ -23,60 +23,61 @@ npm test
 
 ```
 var serial = require('riverjs-event-sequence').serial;
-var task1=function(){
-  setTimeout(function(){
-      //your asyncnoize logic
-      queue.next('task2','needed','parameters');
-      },500);
-},
-  task2=function(str3,str2,str3){
-    //you asyncnoize logic2 
-    queue.next('kkk');
-  }
-...
-taskn
 
 var queue = new serial();
+
+
 queue.push(task1);
 queue.push(task2);
 queue.push(task3);
 ...
 queue.push(taskn);
-queue.exec();
+
+queue.exec(1,2,3,4);
+
+
+//each task should call next() ,when finished and can pass any parametes to it
+//For example
+function task1(){
+  var me = this;
+  setTimeout(function(){
+    me.next(1,2);
+  });
+}
+function task2(n1,n2){
+}
+
+//and you can pass parameters to exec as the first tasks args
+queue.exec(1,2,3,4);
+
 ```
 
 
 ###Parallel sequence, how to use
 
 ```
-var parallel = require('riverjs-event-sequence').parallel;
-    var task1 = function (){
-      setTimeout(function () {
-          data.push({name:'task1',time:Date.now() - beginTime});
-          queue.update();
-      }, 50);
-    },
-    task2 = function (msg,code){
-      var args = arguments;
-      setTimeout(function () {
-        data.push({name:'task2',time:Date.now() - beginTime});
-        queue.update();
-      }, 50);
-    },
-    task3 = function (msg,code,fn){
-      var args = arguments;
-      setTimeout(function () {
-        data.push({name:'task3',time:Date.now() - beginTime});
-        queue.update();
-        done();
-      }, 100);
-    };
 
-    var queue = new parallel();
-    queue.push(task1);
-    queue.push(task2);
-    queue.push(task3);
-    queue.exec();
+var queue = new parallel();
+task1.args = [1,2];
+queue.push(task1);
+queue.push(task2);
+queue.push(task3);
+queue.exec();
+
+queue.on('end',function(){
+  //when all parallel tasks end , here will be triggerd
+})
+
+
+//each task should call this.update , when finished.
+//For example:
+
+function task1(name,sex){
+  var  me = this;
+  setTimeout(function(){
+    me.update();
+  },500);
+}
 
 ```
 
