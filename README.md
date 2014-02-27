@@ -58,9 +58,9 @@ queue.exec(1,2,3,4);
 ```
 
 var queue = new parallel();
-queue.push(task1,[params]);
-queue.push(task2,[1,2]);
-queue.push(task3,[{a:1}]);
+queue.push(task1,params);
+queue.push(task2,1,2);
+queue.push(task3,{a:1});
 queue.exec();
 
 queue.on('end',function(){
