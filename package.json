@@ -1,6 +1,6 @@
 {
   "name": "riverjs-event-sequence",
-  "version": "0.0.7",
+  "version": "0.0.71",
   "description": "a tool for handling serial and parallel asynchronous event quene.",
   "main": "index.js",
   "scripts": {
